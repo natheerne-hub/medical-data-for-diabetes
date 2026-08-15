@@ -1,0 +1,44 @@
+name: Verify Diabetes Notebook
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "diabetes_analysis.ipynb"
+      - "diabetes.csv"
+      - "requirements.txt"
+      - ".github/workflows/notebook-ci.yml"
+  pull_request:
+    branches: [main]
+
+jobs:
+  execute-notebook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt nbconvert
+
+      - name: Execute notebook from a clean environment
+        env:
+          MPLBACKEND: Agg
+        run: |
+          jupyter nbconvert \
+            --to notebook \
+            --execute diabetes_analysis.ipynb \
+            --output diabetes_analysis.executed.ipynb \
+            --ExecutePreprocessor.timeout=600
+
+      - name: Confirm executed notebook exists
+        run: test -s diabetes_analysis.executed.ipynb
