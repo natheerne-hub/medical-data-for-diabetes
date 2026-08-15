@@ -1,58 +1,54 @@
 # 🩸 Diabetes Medical Data Analysis
 
-### Healthcare Data Cleaning & Exploratory Analysis | Dr. Natheer Soliman, MD
+### Healthcare Data Cleaning, EDA & Statistical Analysis | Dr. Natheer Soliman, MD
 
-A healthcare data analysis project focused on cleaning, exploring, and understanding clinical variables associated with diabetes.
+A healthcare data analysis project focused on cleaning, exploring, and interpreting clinical variables associated with diabetes.
 
 ## 🎯 Project Objective
 
-The project demonstrates a practical healthcare data workflow: identify data-quality problems, apply clinically informed preprocessing, explore distributions, and prepare the dataset for further statistical or machine-learning analysis.
+Demonstrate a practical healthcare analytics workflow: identify data-quality issues, apply clinically informed preprocessing, explore patterns, test group differences, and communicate findings with appropriate clinical caution.
+
+## 📊 Dataset
+
+The dataset contains **768 observations and 9 variables**, including glucose, blood pressure, BMI, insulin, age, pregnancies, diabetes pedigree function, and the binary diabetes outcome.
 
 ## 🔎 Analysis Workflow
 
-### 1. Data Exploration
+1. **Data understanding** — inspect shape, data types, descriptive statistics, and missingness.
+2. **Clinically informed cleaning** — treat implausible zero values in `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, and `BMI` as missing measurements.
+3. **Median imputation** — replace those missing values using column medians to reduce sensitivity to skewed distributions and extreme values.
+4. **Exploratory data analysis** — examine outcome distribution, feature distributions, correlations, and relationships with diabetes status.
+5. **Outlier review** — inspect potential extreme observations using box plots and IQR-based diagnostics.
+6. **Statistical testing** — compare numerical features between outcome groups using independent-samples t-tests with variance checks.
 
-- Inspect dataset dimensions and data types
-- Review missing values
-- Examine distributions and descriptive statistics
+## 🔬 Key Findings
 
-### 2. Clinically Informed Data Cleaning
+- `Glucose` showed the strongest linear association with diabetes outcome in the exploratory correlation analysis.
+- BMI, age, pregnancies, diabetes pedigree function, and insulin also differed between outcome groups in the notebook's statistical comparisons.
+- Blood pressure did not show a statistically significant mean difference at the 0.05 threshold in the current analysis.
+- The analysis is exploratory: association does not imply causation, and p-values should be interpreted alongside effect size, clinical context, and multiple-testing considerations.
 
-Several variables contain zero values that may be physiologically implausible or represent missing measurements, including:
+## 🩺 Clinical Interpretation
 
-- Glucose
-- Blood pressure
-- Skin thickness
-- Insulin
-- BMI
+The project highlights how data-quality decisions can materially affect healthcare analysis. Values such as zero glucose or zero BMI are not treated as valid physiological measurements in this workflow; they are handled as likely missing observations before analysis.
 
-These values were treated as missing (`NaN`) before further analysis.
-
-### 3. Missing-Value Imputation
-
-Missing values were imputed using the **median**, reducing sensitivity to extreme observations.
-
-### 4. Outlier Analysis
-
-Box plots were used to inspect distributions and identify potential extreme observations, particularly in variables such as insulin.
+The findings are intended to demonstrate healthcare analytics skills, not to provide diagnosis or individual clinical risk assessment.
 
 ## 🧰 Tech Stack
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Jupyter Notebook / Google Colab
+`Python` · `Pandas` · `NumPy` · `Matplotlib` · `Seaborn` · `SciPy` · `Jupyter / Google Colab`
 
 ## 📁 Repository Contents
 
-- `diabetes.csv` — original dataset
-- `Untitled0 (1).ipynb` — analysis notebook
+- [`diabetes_analysis.ipynb`](./diabetes_analysis.ipynb) — complete analysis notebook
+- [`diabetes.csv`](./diabetes.csv) — source dataset
 
-## ⚠️ Important Note
+## ⚠️ Limitations
 
-This project is for **educational and portfolio purposes**. Data cleaning decisions are context-dependent and should be validated against the clinical meaning, measurement process, and source documentation of a real healthcare dataset.
+- The notebook uses an observational dataset and cannot establish causality.
+- Statistical significance does not necessarily imply clinical significance.
+- Multiple hypothesis tests should ideally be followed by a correction procedure such as Benjamini–Hochberg FDR.
+- Outlier treatment should be justified using source documentation and clinical context before use in real-world analyses.
 
 ## 👨‍⚕️ Author
 
