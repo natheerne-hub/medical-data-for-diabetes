@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/diabetes-banner.svg" alt="Diabetes Medical Data Analysis" width="100%"></p>
+
 # 🩸 Diabetes Medical Data Analysis
 
 [![Verify Diabetes Notebook](https://github.com/natheerne-hub/medical-data-for-diabetes/actions/workflows/notebook-ci.yml/badge.svg)](https://github.com/natheerne-hub/medical-data-for-diabetes/actions/workflows/notebook-ci.yml)
@@ -22,6 +24,19 @@ The dataset contains **768 observations and 9 variables**, including glucose, bl
 4. **Outlier review** — flag potential extreme observations using box plots and IQR diagnostics without automatically capping or deleting clinically plausible values.
 5. **Exploratory data analysis** — examine outcome distribution, feature distributions, correlations, and relationships with diabetes status.
 6. **Statistical testing** — compare outcome groups with Welch's independent-samples t-tests, report effect sizes, and apply Benjamini–Hochberg FDR correction across feature tests.
+
+## 📈 Visual Analysis
+
+The published notebook generates several portfolio-ready views from the project data:
+
+- Box plots for numerical predictors
+- Correlation heatmap
+- Diabetes outcome distribution
+- Histograms for numerical features
+- Violin plots comparing features by outcome
+- Pairwise relationship plots colored by outcome
+
+Selected exported notebook figures can be added here as repository assets after execution so the README stays tied to reproducible project outputs.
 
 ## 🔬 Analytical Focus
 
@@ -50,6 +65,7 @@ The findings are intended to demonstrate healthcare analytics skills, not to pro
 - [`diabetes.csv`](./diabetes.csv) — source dataset
 - [`requirements.txt`](./requirements.txt) — Python dependencies
 - [`.github/workflows/notebook-ci.yml`](./.github/workflows/notebook-ci.yml) — automated notebook verification
+- [`assets/`](./assets) — project visual assets
 
 ## ⚠️ Limitations
 
