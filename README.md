@@ -16,6 +16,12 @@ Demonstrate a practical healthcare analytics workflow: identify data-quality iss
 
 The dataset contains **768 observations and 9 variables**, including glucose, blood pressure, BMI, insulin, age, pregnancies, diabetes pedigree function, and the binary diabetes outcome.
 
+### Data provenance status
+
+The file in this repository has the structure commonly associated with the 768-row Pima diabetes dataset. However, the exact upstream source, citation, and redistribution license have not yet been verified from the repository history.
+
+**Portfolio decision:** the analysis remains available on GitHub, but the CSV will not be republished to Kaggle until provenance and redistribution rights are confirmed. A future Kaggle version should attach an authorized original dataset rather than upload an unattributed copy.
+
 ## 🔎 Analysis Workflow
 
 1. **Data understanding** — inspect shape, data types, descriptive statistics, and missingness.
