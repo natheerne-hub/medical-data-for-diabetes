@@ -6,83 +6,77 @@
 
 ### Healthcare Data Cleaning, EDA & Statistical Analysis | Dr. Natheer Soliman, MD
 
-A reproducible healthcare data analysis project focused on cleaning, exploring, and interpreting clinical variables associated with diabetes.
+A reproducible healthcare analytics project focused on **clinical data quality, exploratory analysis, statistical comparison, and cautious interpretation** of diabetes-related variables.
 
-## 🎯 Project Objective
+## Project objective
 
-Demonstrate a practical healthcare analytics workflow: identify data-quality issues, apply clinically informed preprocessing, explore patterns, test group differences, and communicate findings with appropriate clinical caution.
+Demonstrate a practical analytical workflow in which data quality is treated as part of the clinical problem: inspect the raw structure, identify implausible zero-coded physiological measurements, document preprocessing decisions, explore outcome patterns, quantify group differences, and avoid causal or diagnostic overinterpretation.
 
-## 📊 Dataset
+## Dataset snapshot
 
-The dataset contains **768 observations and 9 variables**, including glucose, blood pressure, BMI, insulin, age, pregnancies, diabetes pedigree function, and the binary diabetes outcome.
+- **768 observations**
+- **9 variables**
+- Variables include glucose, blood pressure, BMI, insulin, age, pregnancies, diabetes pedigree function and a binary diabetes outcome.
 
-### Data provenance status
+### Provenance guardrail
 
-The file in this repository has the structure commonly associated with the 768-row Pima diabetes dataset. However, the exact upstream source, citation, and redistribution license have not yet been verified from the repository history.
+The repository copy has the structure commonly associated with the 768-row Pima diabetes dataset, but the **exact upstream source, citation and redistribution license cannot be verified from the repository history currently available**.
 
-**Portfolio decision:** the analysis remains available on GitHub, but the CSV will not be republished to Kaggle until provenance and redistribution rights are confirmed. A future Kaggle version should attach an authorized original dataset rather than upload an unattributed copy.
+For that reason:
 
-## 🔎 Analysis Workflow
+- the repository does not claim a more specific provenance than can be supported;
+- the CSV should not be republished as a new dataset on external platforms without verified redistribution rights;
+- analytical conclusions are framed as findings from the repository dataset rather than claims about a broader population.
 
-1. **Data understanding** — inspect shape, data types, descriptive statistics, and missingness.
-2. **Clinically informed cleaning** — treat selected zero-coded physiological measurements in `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, and `BMI` as likely missing/unrecorded values.
-3. **Median imputation** — replace those missing values using column medians for this exploratory analysis while preserving the untouched source data separately.
-4. **Outlier review** — flag potential extreme observations using box plots and IQR diagnostics without automatically capping or deleting clinically plausible values.
-5. **Exploratory data analysis** — examine outcome distribution, feature distributions, correlations, and relationships with diabetes status.
-6. **Statistical testing** — compare outcome groups with Welch's independent-samples t-tests, report effect sizes, and apply Benjamini–Hochberg FDR correction across feature tests.
+This is an intentional data-governance decision. In healthcare analytics, uncertain provenance should be made visible rather than filled with an assumed citation.
 
-## 📈 Visual Analysis
+## Analysis workflow
 
-The published notebook generates several portfolio-ready views from the project data:
+1. Inspect shape, data types, descriptive statistics and missingness.
+2. Treat selected zero-coded physiological measurements in `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin` and `BMI` as likely missing/unrecorded values for the exploratory workflow.
+3. Apply median imputation while preserving the original source data separately in the notebook.
+4. Review potential extreme observations with box plots and IQR diagnostics without automatically deleting clinically plausible values.
+5. Explore outcome distribution, feature distributions, correlations and relationships with diabetes status.
+6. Compare outcome groups using Welch's independent-samples t-tests.
+7. Report effect sizes and apply Benjamini–Hochberg FDR correction across feature tests.
 
-- Box plots for numerical predictors
-- Correlation heatmap
-- Diabetes outcome distribution
-- Histograms for numerical features
-- Violin plots comparing features by outcome
-- Pairwise relationship plots colored by outcome
+## Analytical principles demonstrated
 
-Selected exported notebook figures can be added here as repository assets after execution so the README stays tied to reproducible project outputs.
+- Clinical plausibility matters when interpreting apparent numeric values.
+- Missing-data decisions are documented rather than silently applied.
+- Outliers are reviewed before modification.
+- Statistical significance is considered alongside effect size.
+- Multiple comparisons are explicitly addressed.
+- Association is not presented as causation.
 
-## 🔬 Analytical Focus
+## Reproducibility
 
-- `Glucose` is a central feature to inspect in relation to diabetes outcome.
-- BMI, age, pregnancies, insulin, blood pressure, and diabetes pedigree information are interpreted as part of a multivariable clinical picture rather than in isolation.
-- Statistical evidence is reported alongside effect size and corrected for multiple testing.
-- The analysis is exploratory: association does not imply causation.
+A GitHub Actions workflow installs the project dependencies and executes the notebook from a clean environment. This provides an automated check for broken paths, missing imports and execution-order problems.
 
-## ✅ Reproducibility
+## Repository contents
 
-The repository includes a **GitHub Actions verification workflow** that installs dependencies and executes the entire notebook from a clean environment on every relevant push or pull request. This helps detect missing imports, broken paths, execution-order errors, and other reproducibility problems automatically.
+- [`diabetes_analysis.ipynb`](./diabetes_analysis.ipynb) — complete analysis notebook
+- [`diabetes.csv`](./diabetes.csv) — repository dataset; see provenance guardrail above
+- [`requirements.txt`](./requirements.txt) — Python dependencies
+- [`.github/workflows/notebook-ci.yml`](./.github/workflows/notebook-ci.yml) — automated notebook verification
+- [`assets/`](./assets) — visual assets
 
-## 🩺 Clinical Interpretation
-
-The project highlights how data-quality decisions can materially affect healthcare analysis. The original dataset is preserved separately in the notebook, preprocessing decisions are documented, and potential outliers are reviewed rather than automatically altered.
-
-The findings are intended to demonstrate healthcare analytics skills, not to provide diagnosis or individual clinical risk assessment.
-
-## 🧰 Tech Stack
+## Tech stack
 
 `Python` · `Pandas` · `NumPy` · `Matplotlib` · `Seaborn` · `SciPy` · `Jupyter / Google Colab` · `GitHub Actions`
 
-## 📁 Repository Contents
+## Limitations
 
-- [`diabetes_analysis.ipynb`](./diabetes_analysis.ipynb) — complete analysis notebook
-- [`diabetes.csv`](./diabetes.csv) — source dataset
-- [`requirements.txt`](./requirements.txt) — Python dependencies
-- [`.github/workflows/notebook-ci.yml`](./.github/workflows/notebook-ci.yml) — automated notebook verification
-- [`assets/`](./assets) — project visual assets
+- Exact upstream dataset provenance and redistribution rights remain unverified from the available repository history.
+- The analysis is observational and cannot establish causality.
+- Median imputation does not model uncertainty in missing measurements.
+- Statistical significance does not automatically imply clinical significance.
+- Predictive modeling would require leakage-safe preprocessing, validation, calibration and appropriate clinical governance.
+- This project is a portfolio analysis and not a diagnostic system.
 
-## ⚠️ Limitations
-
-- The notebook uses an observational dataset and cannot establish causality.
-- Single median imputation does not represent uncertainty in missing measurements.
-- Statistical significance does not necessarily imply clinical significance.
-- Outlier handling in real-world clinical work should be informed by source documentation and clinical context.
-- If predictive modeling is added, preprocessing must be fitted inside the training/cross-validation pipeline to avoid data leakage.
-- Any clinical predictive use would require appropriate validation, calibration assessment, and clinical oversight.
-
-## 👨‍⚕️ Author
+## Author
 
 **Dr. Natheer Soliman, MD**  
-Healthcare Data Analyst | Clinical Data & AI
+Healthcare Data Analytics · Clinical Analytics · Health Data Quality
+
+[GitHub Profile](https://github.com/natheerne-hub)
