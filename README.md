@@ -4,7 +4,7 @@
 
 [![Verify Diabetes Notebook](https://github.com/natheerne-hub/medical-data-for-diabetes/actions/workflows/notebook-ci.yml/badge.svg)](https://github.com/natheerne-hub/medical-data-for-diabetes/actions/workflows/notebook-ci.yml)
 
-### Healthcare Data Cleaning, EDA & Statistical Analysis | Dr. Natheer Soliman, MD
+### Healthcare Data Cleaning, EDA & Statistical Analysis | Dr. Nather Yunis Suliaman, MD
 
 A reproducible healthcare analytics project focused on **clinical data quality, exploratory analysis, statistical comparison, and cautious interpretation** of diabetes-related variables.
 
@@ -76,7 +76,7 @@ A GitHub Actions workflow installs the project dependencies and executes the not
 
 ## Author
 
-**Dr. Natheer Soliman, MD**  
+**Dr. Nather Yunis Suliaman, MD**  
 Healthcare Data Analytics · Clinical Analytics · Health Data Quality
 
 [GitHub Profile](https://github.com/natheerne-hub)
